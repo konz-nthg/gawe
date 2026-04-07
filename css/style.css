@@ -574,3 +574,32 @@
                 font-size: 36px;
             }
         }
+
+.background-pattern{
+    width: 100%; 
+    height: 100%; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    pointer-events: none; 
+    z-index: -1;
+}
+
+.square-lime{
+    width: 95.37px; 
+    height: 95.37px; 
+    position: absolute; 
+    background: #D0FE54;
+}
+
+.square-blue{
+    width: 128.22px; 
+    height: 128.22px; 
+    position: absolute; 
+    background: #1D47F5;
+}
+
+
+
+
+
