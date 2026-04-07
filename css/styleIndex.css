@@ -1,6 +1,6 @@
         @font-face {
             font-family: 'Symtext';
-            src: url('Symtext.ttf') format('truetype');
+            src: url('../attr/Symtext.ttf') format('truetype');
             font-weight: normal;
             font-style: normal;
         }
