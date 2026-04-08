@@ -40,15 +40,14 @@
         }
 
         .home-icon {
-            width: 100px;
-            height: 100px;
+            width: 70px;
             cursor: pointer;
             transition: transform 0.3s ease, filter 0.3s ease;
             border-radius: 100%;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             background: var(--white);
-            padding: 8px;
-            object-fit: contain;
+            left: 50px;
+            padding: 5px;
             flex-shrink: 0;
         }
 
@@ -67,9 +66,9 @@
             box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
             position: relative;
             flex: 1;
-            height: 82px;
+            height: 40px;
             box-sizing: border-box;
-            outline: 8px #1D47F5 solid;
+            outline: 3.5px #1D47F5 solid;
             overflow: hidden;
         }
 
@@ -83,6 +82,7 @@
             font-size: 36px;
             font-family: 'Symtext';
             font-weight: 400;
+            font-size: 20px;
             color: #1D47F5;
             text-transform: lowercase;
             transition: background 0.3s ease, color 0.3s ease;
