@@ -419,8 +419,42 @@
                 <div style="width: 1731.20px; height: 655.08px; left: 344.47px; top: 456.12px; position: absolute; background: #1D47F5"></div>
                 <div style="width: 1628.80px; height: 734.68px; left: 395.67px; top: 416.32px; position: absolute; background: #1D47F5"></div>
                 <div style="width: 1837.41px; height: 574.91px; left: 292.63px; top: 496.21px; position: absolute; background: #1D47F5"></div>
-                <div style="width: 1668.98px; height: 271px; left: 383px; top: 1196.16px; position: absolute; background: #1D47F5"></div>
-                <img style="width: 1628.80px; height: 886.64px; left: 396.93px; top: 132.88px; position: absolute" src="img/gallery/g1.png" />
+                
+                <!-- Left Button (Previous) - to the left of the image, vertically centered -->
+                <div onclick="prevVoteImage()" style="position: absolute; left: 20px; top: 500px; cursor: pointer; z-index: 10;">
+                    <img src="img/next-button.png" alt="Previous" style="width: 180px; height: 180px;">
+                </div>
+                
+                <!-- Vote Image Display -->
+                <img id="voteImage" style="width: 1628.80px; height: 886.64px; left: 396.93px; top: 132.88px; position: absolute" src="img/gallery/g1.png" />
+                
+                <!-- Right Button (Next) - to the right of the image, vertically centered -->
+                <div onclick="nextVoteImage()" style="position: absolute; left: 2270px; top: 500px; cursor: pointer; z-index: 10;">
+                    <img src="img/next-button.png" alt="Next" style="width: 180px; height: 180px; transform: rotate(180deg);">
+                </div>
+                
+                <!-- Vote Box with Stars -->
+                <div style="width: 1668.98px; height: 271px; left: 383px; top: 1196.16px; position: absolute; background: #1D47F5;">
+                    <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                        <div id="star-rating" style="display: flex; gap: 10px;">
+                            <div class="star-off" data-index="1" onclick="toggleStar(1)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="2" onclick="toggleStar(2)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="3" onclick="toggleStar(3)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="4" onclick="toggleStar(4)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="5" onclick="toggleStar(5)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -1343,6 +1377,61 @@
                     btn.style.display = 'none';
                     console.log('Hiding play button');
                 }
+            }
+        }
+        
+        // Star rating system for vote page
+        function toggleStar(rating) {
+            // Get all star elements
+            var stars = document.querySelectorAll('.star-off, .star-on');
+            
+            // Update stars based on rating
+            stars.forEach(function(star) {
+                var index = parseInt(star.getAttribute('data-index'));
+                if (index <= rating) {
+                    // Turn star on (green)
+                    star.className = 'star-on';
+                    star.innerHTML = '<img src="img/vote/star-on.png" alt="Star On" style="width: 250px; height: 250px; cursor: pointer;">';
+                } else {
+                    // Turn star off (white)
+                    star.className = 'star-off';
+                    star.innerHTML = '<img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">';
+                }
+            });
+            
+            console.log('Star rating set to:', rating);
+        }
+        
+        // Vote image navigation
+        var voteImages = [
+            'img/gallery/g1.png',
+            'img/gallery/g2.png',
+            'img/gallery/g3.png',
+            'img/gallery/g4.png'
+        ];
+        var currentVoteImageIndex = 0;
+        
+        function nextVoteImage() {
+            currentVoteImageIndex = (currentVoteImageIndex + 1) % voteImages.length;
+            var imgElement = document.getElementById('voteImage');
+            if (imgElement) {
+                var newSrc = voteImages[currentVoteImageIndex] + '?t=' + new Date().getTime();
+                imgElement.src = newSrc;
+                alert('Next clicked\nIndex: ' + currentVoteImageIndex + '\nNew image: ' + newSrc);
+            } else {
+                alert('voteImage element NOT FOUND!');
+            }
+        }
+        
+        function prevVoteImage() {
+            currentVoteImageIndex = (currentVoteImageIndex - 1 + voteImages.length) % voteImages.length;
+            var imgElement = document.getElementById('voteImage');
+            if (imgElement) {
+                var newSrc = voteImages[currentVoteImageIndex] + '?t=' + new Date().getTime();
+                imgElement.src = newSrc;
+                alert('Previous clicked\nIndex: ' + currentVoteImageIndex + '\nNew image: ' + newSrc);
+            } else {
+                alert('voteImage element NOT FOUND!');
             }
         }
     </script>
