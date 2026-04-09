@@ -421,17 +421,13 @@
                 <div style="width: 1837.41px; height: 574.91px; left: 292.63px; top: 496.21px; position: absolute; background: #1D47F5"></div>
                 
                 <!-- Left Button (Previous) - to the left of the image, vertically centered -->
-                <div onclick="prevVoteImage()" style="position: absolute; left: 20px; top: 500px; cursor: pointer; z-index: 10;">
-                    <img src="img/next-button.png" alt="Previous" style="width: 180px; height: 180px;">
-                </div>
+                <img onclick="prevVoteImage()" src="img/next-button.png" alt="Previous" style="position: absolute; left: 20px; top: 500px; width: 180px; height: 180px; cursor: pointer; z-index: 100;">
                 
                 <!-- Vote Image Display -->
                 <img id="voteImage" style="width: 1628.80px; height: 886.64px; left: 396.93px; top: 132.88px; position: absolute" src="img/gallery/g1.png" />
                 
                 <!-- Right Button (Next) - to the right of the image, vertically centered -->
-                <div onclick="nextVoteImage()" style="position: absolute; left: 2270px; top: 500px; cursor: pointer; z-index: 10;">
-                    <img src="img/next-button.png" alt="Next" style="width: 180px; height: 180px; transform: rotate(180deg);">
-                </div>
+                <img onclick="nextVoteImage()" src="img/next-button.png" alt="Next" style="position: absolute; left: 2270px; top: 500px; width: 180px; height: 180px; transform: rotate(180deg); cursor: pointer; z-index: 100;">
                 
                 <!-- Vote Box with Stars -->
                 <div style="width: 1668.98px; height: 271px; left: 383px; top: 1196.16px; position: absolute; background: #1D47F5;">
@@ -1412,27 +1408,17 @@
         var currentVoteImageIndex = 0;
         
         function nextVoteImage() {
+            alert('NEXT BUTTON CLICKED!');
             currentVoteImageIndex = (currentVoteImageIndex + 1) % voteImages.length;
             var imgElement = document.getElementById('voteImage');
-            if (imgElement) {
-                var newSrc = voteImages[currentVoteImageIndex] + '?t=' + new Date().getTime();
-                imgElement.src = newSrc;
-                alert('Next clicked\nIndex: ' + currentVoteImageIndex + '\nNew image: ' + newSrc);
-            } else {
-                alert('voteImage element NOT FOUND!');
-            }
+            imgElement.src = voteImages[currentVoteImageIndex];
         }
         
         function prevVoteImage() {
+            alert('PREV BUTTON CLICKED!');
             currentVoteImageIndex = (currentVoteImageIndex - 1 + voteImages.length) % voteImages.length;
             var imgElement = document.getElementById('voteImage');
-            if (imgElement) {
-                var newSrc = voteImages[currentVoteImageIndex] + '?t=' + new Date().getTime();
-                imgElement.src = newSrc;
-                alert('Previous clicked\nIndex: ' + currentVoteImageIndex + '\nNew image: ' + newSrc);
-            } else {
-                alert('voteImage element NOT FOUND!');
-            }
+            imgElement.src = voteImages[currentVoteImageIndex];
         }
     </script>
     <script src="js/scriipt.js"></script>
