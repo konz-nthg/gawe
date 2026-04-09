@@ -1056,7 +1056,7 @@
 
         /* Gallery Layer Switcher */
         .layer-stopmotion, .layer-draw {
-            position: relative;
+            position: relatives;
             top: 0;
             left: 0;
             width: 100%;
@@ -1117,4 +1117,55 @@
   top: 20px;
   left: 20px;
   z-index: 999;
+}
+
+.popout-stoplayer-s {
+    width: 320px;
+    height: 160px;
+    background: #2f49d1;
+
+    clip-path: polygon(
+        0 10px,
+        5px 10px,
+        5px 5px,
+        10px 5px,
+        10px 0,
+
+        calc(100% - 10px) 0,
+        calc(100% - 10px) 5px,
+        calc(100% - 5px) 5px,
+        calc(100% - 5px) 10px,
+        100% 10px,
+
+        100% calc(100% - 10px),
+        calc(100% - 5px) calc(100% - 10px),
+        calc(100% - 5px) calc(100% - 5px),
+        calc(100% - 10px) calc(100% - 5px),
+        calc(100% - 10px) 100%,
+
+        10px 100%,
+        10px calc(100% - 5px),
+        5px calc(100% - 5px),
+        5px calc(100% - 10px),
+        0 calc(100% - 10px)
+    );
+}
+
+.nav-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.3s;
+}
+
+.nav-layer:nth-child(1) {
+  z-index: 20;
+}
+.nav-layer:nth-child(2) {
+  z-index: 10;
 }
