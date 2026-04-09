@@ -1056,7 +1056,7 @@
 
         /* Gallery Layer Switcher */
         .layer-stopmotion, .layer-draw {
-            position: absolute;
+            position: relative;
             top: 0;
             left: 0;
             width: 100%;
@@ -1080,3 +1080,41 @@
         .layer-switcher:active .layer-element.front {
             transform: scale(0.95);
         }
+
+        body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.mode {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  display: none; /* default hidden */
+}
+
+/* yang aktif */
+.mode.active {
+  display: block;
+}
+
+/* styling tambahan */
+#drawMode {
+  background: #111;
+  color: white;
+}
+
+#stopMode {
+  background: #222;
+  color: white;
+}
+
+.controls {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 999;
+}
