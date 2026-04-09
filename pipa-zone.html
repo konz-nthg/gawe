@@ -116,7 +116,7 @@
                             <img src="img/profil 9.png" alt="Profile 9" class="profile-img-new" data-index="8" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; display: none;">
                         </div>
                         <div class="button-container-new" style="display: flex; gap: 60px; justify-content: center; align-items: center; margin-top: 30px; width: 417px; margin-left: auto; margin-right: auto;">
-                                <img src="img/Next-L-Button.png" alt="Previous" class="btn-nav-new" id="btnPrevNew" style="width: 60px; height: 60px; cursor: pointer;">
+                                <img src="img/next-button.png" alt="Previous" class="btn-nav-new" id="btnPrevNew" style="width: 60px; height: 60px; cursor: pointer; transform: scaleX(-1);">
                                 <img src="img/Next-R-Button.png" alt="Next" class="btn-nav-new" id="btnNextNew" style="width: 60px; height: 60px; cursor: pointer;">
                             </div>
                         </div>
@@ -296,6 +296,7 @@
                         <div style="width: 770.76px; height: 1251px; left: 47.41px; top: 160.51px; position: absolute; background: #1D47F5"></div>
                         <div style="width: 822.37px; height: 1198.85px; left: 21.61px; top: 186.59px; position: absolute; background: #1D47F5"></div>
                         <div style="width: 865.59px; height: 1141.17px; left: 0px; top: 215.43px; position: absolute; background: #1D47F5"></div>
+                        <div style="width: 636px; height: 81px; left: 115px; top: 50px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 64px; font-family: Symtext; font-weight: 400; word-wrap: break-word">OTHER PLAYERS</div>
                         <div style="width: 392.72px; height: 126.49px; left: 80.52px; top: 316.11px; position: absolute; background: #D0FE54; pointer-events: none;" class="player-box" data-row="0"></div>
                         <div style="width: 369.49px; height: 141.85px; left: 92.13px; top: 308.43px; position: absolute; background: #D0FE54; pointer-events: none;" class="player-box" data-row="0"></div>
                         <div style="width: 416.81px; height: 111.01px; left: 68.76px; top: 323.85px; position: absolute; background: #D0FE54; pointer-events: none;" class="player-box" data-row="0"></div>
@@ -338,13 +339,12 @@
                         <img style="width: 124.06px; height: 127.15px; left: 100px; top: 809.32px; position: absolute; transform:; transform-origin: top left" src="img/profil 7.png" />
                         <img style="width: 124.06px; height: 127.15px; left: 100px; top: 974.89px; position: absolute; transform:; transform-origin: top left" src="img/profil 7.png" />
                         <img style="width: 124.06px; height: 127.15px; left: 100px; top: 1140.46px; position: absolute; transform:; transform-origin: top left" src="img/profil 7.png" />
-                        <div style="width: 401px; left: 254.99px; top: 343.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="0" onclick="selectPlayer(0)">Adi Pratama</div>
-                        <div style="width: 636px; height: 81px; left: 114.99px; top: 62.51px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 64px; font-family: Symtext; font-weight: 400; word-wrap: break-word">OTHER PLAYERS</div>
-                        <div style="width: 401px; left: 254.99px; top: 509.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="1" onclick="selectPlayer(1)">Budi Santoso</div>
-                        <div style="width: 424px; left: 254.99px; top: 674.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="2" onclick="selectPlayer(2)">Citra Dewi</div>
-                        <div style="width: 424px; left: 254.99px; top: 840.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="3" onclick="selectPlayer(3)">Dedi Kurniawan</div>
-                        <div style="width: 424px; left: 254.99px; top: 1006.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="4" onclick="selectPlayer(4)">Eka Nurhaliza</div>
-                        <div style="width: 424px; left: 254.99px; top: 1171.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="5" onclick="selectPlayer(5)">Fajar Nugroho</div>
+                        <div style="width: 401px; left: 254.99px; top: 343.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="0" onclick="selectPlayer(0)">Daffa</div>
+                        <div style="width: 401px; left: 254.99px; top: 509.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="1" onclick="selectPlayer(1)">Sabina</div>
+                        <div style="width: 424px; left: 254.99px; top: 674.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="2" onclick="selectPlayer(2)">Syerra</div>
+                        <div style="width: 424px; left: 254.99px; top: 840.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="3" onclick="selectPlayer(3)">Nabila</div>
+                        <div style="width: 424px; left: 254.99px; top: 1006.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="4" onclick="selectPlayer(4)">Nazell</div>
+                        <div style="width: 424px; left: 254.99px; top: 1171.51px; position: absolute; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 48px; font-family: Symtext; font-weight: 400; word-wrap: break-word; cursor: pointer;" class="player-name" data-row="5" onclick="selectPlayer(5)">Pipaw</div>
                     </div>            
 
                 <!-- Stopmotion Layer (Background) -->
@@ -408,8 +408,6 @@
             </div>
         </div>
 
-        <script src="js/scriipt.js"></script>
-
         <!-- Page 4: VOTE -->
         <div class="page-section" data-page="vote">
             <div class="vote-container" style="position: relative; width: 2414.52px; height: 1467.16px; transform: scale(0.35); transform-origin: center center; left: 50%; top: 50%; margin-left: -1207px; margin-top: -734px;">
@@ -419,8 +417,38 @@
                 <div style="width: 1731.20px; height: 655.08px; left: 344.47px; top: 456.12px; position: absolute; background: #1D47F5"></div>
                 <div style="width: 1628.80px; height: 734.68px; left: 395.67px; top: 416.32px; position: absolute; background: #1D47F5"></div>
                 <div style="width: 1837.41px; height: 574.91px; left: 292.63px; top: 496.21px; position: absolute; background: #1D47F5"></div>
-                <div style="width: 1668.98px; height: 271px; left: 383px; top: 1196.16px; position: absolute; background: #1D47F5"></div>
-                <img style="width: 1628.80px; height: 886.64px; left: 396.93px; top: 132.88px; position: absolute" src="img/gallery/g1.png" />
+                
+                <!-- Left Button (Previous) -->
+                <img id="btnPrevVote" src="img/next-button.png" alt="Previous" style="position: absolute; left: 20px; top: 500px; width: 180px; height: 180px; cursor: pointer; z-index: 100;">
+                
+                <!-- Vote Image Display -->
+                <img id="voteImage" style="width: 1628.80px; height: 886.64px; left: 396.93px; top: 132.88px; position: absolute" src="img/gallery/g1.png" />
+                
+                <!-- Right Button (Next) -->
+                <img id="btnNextVote" src="img/next-button.png" alt="Next" style="position: absolute; left: 2270px; top: 500px; width: 180px; height: 180px; transform: rotate(180deg); cursor: pointer; z-index: 100;">
+                
+                <!-- Vote Box with Stars -->
+                <div style="width: 1668.98px; height: 271px; left: 383px; top: 1196.16px; position: absolute; background: #1D47F5;">
+                    <div style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);">
+                        <div id="star-rating" style="display: flex; gap: 10px;">
+                            <div class="star-off" data-index="1" onclick="toggleStar(1)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="2" onclick="toggleStar(2)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="3" onclick="toggleStar(3)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="4" onclick="toggleStar(4)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                            <div class="star-off" data-index="5" onclick="toggleStar(5)">
+                                <img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -449,11 +477,17 @@
                 <img style="width: 791px; height: 467px; left: 1711.74px; top: 838.05px; position: absolute; border: 15px #D0FE54 solid" src="img/gallery/g2.png" />
                 <div style="width: 2491.12px; height: 233.02px; left: 38.18px; top: 24.95px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #D0FE54; font-size: 78.80px; font-family: Symtext; font-weight: 400; word-wrap: break-word">GLOBAL LEADERBOARD</div>
                 <div style="width: 405px; height: 151px; left: 449.74px; top: 596.05px; position: absolute; background: #D0FE54"></div>
+                <img src="img/star-lb.png" style="width: 90px; height: 90px; left: 493px; top: 615px; position: absolute;">
                 <div style="width: 405px; height: 151px; left: 1276.74px; top: 596.05px; position: absolute; background: #D0FE54"></div>
+                <img src="img/star-lb.png" style="width: 90px; height: 90px; left: 1320px; top: 615px; position: absolute;">
                 <div style="width: 405px; height: 151px; left: 2097.74px; top: 596.05px; position: absolute; background: #D0FE54"></div>
+                <img src="img/star-lb.png" style="width: 90px; height: 90px; left: 2141px; top: 615px; position: absolute;">
                 <div style="width: 405px; height: 151px; left: 2097.74px; top: 1154.05px; position: absolute; background: #D0FE54"></div>
+                <img src="img/star-lb.png" style="width: 90px; height: 90px; left: 2141px; top: 1173px; position: absolute;">
                 <div style="width: 405px; height: 151px; left: 1276.74px; top: 1157.05px; position: absolute; background: #D0FE54"></div>
+                <img src="img/star-lb.png" style="width: 90px; height: 90px; left: 1320px; top: 1176px; position: absolute;">
                 <div style="width: 405px; height: 151px; left: 449.74px; top: 1157.05px; position: absolute; background: #D0FE54"></div>
+                <img src="img/star-lb.png" style="width: 90px; height: 90px; left: 493px; top: 1176px; position: absolute;">
                 <div style="width: 221.62px; height: 114.43px; left: 611.47px; top: 614.33px; position: absolute; background: #1D47F5"></div>
                 <div style="width: 221.62px; height: 114.43px; left: 611.47px; top: 1175.33px; position: absolute; background: #1D47F5"></div>
                 <div style="width: 221.62px; height: 114.43px; left: 1445.68px; top: 1175.33px; position: absolute; background: #1D47F5"></div>
@@ -1344,6 +1378,103 @@
                     console.log('Hiding play button');
                 }
             }
+        }
+        
+        // Star rating system for vote page
+        function toggleStar(rating) {
+            var stars = document.querySelectorAll('.star-off, .star-on');
+            
+            stars.forEach(function(star) {
+                var index = parseInt(star.getAttribute('data-index'));
+                if (index <= rating) {
+                    star.className = 'star-on';
+                    star.innerHTML = '<img src="img/vote/star-on.png" alt="Star On" style="width: 250px; height: 250px; cursor: pointer;">';
+                } else {
+                    star.className = 'star-off';
+                    star.innerHTML = '<img src="img/vote/star-off.png" alt="Star Off" style="width: 250px; height: 250px; cursor: pointer;">';
+                }
+            });
+        }
+        
+        // Vote image navigation
+        var voteImages = ['img/gallery/g1.png', 'img/gallery/g2.png', 'img/gallery/g3.png', 'img/gallery/g4.png'];
+        var currentVoteImageIndex = 0;
+        
+        window.nextVoteImage = function() {
+            console.log('=== nextVoteImage called ===');
+            currentVoteImageIndex = (currentVoteImageIndex + 1) % voteImages.length;
+            console.log('New index:', currentVoteImageIndex);
+            
+            var container = document.querySelector('.vote-container');
+            var oldImg = document.getElementById('voteImage');
+            console.log('Container:', container);
+            console.log('Old image:', oldImg);
+            console.log('Old image src:', oldImg ? oldImg.src : 'NOT FOUND');
+            
+            if (container && oldImg) {
+                var newSrc = voteImages[currentVoteImageIndex];
+                console.log('New src:', newSrc);
+                
+                // Create new image
+                var newImg = document.createElement('img');
+                newImg.id = 'voteImage';
+                newImg.src = newSrc;
+                newImg.style.cssText = oldImg.style.cssText;
+                
+                // Replace old with new
+                oldImg.parentNode.replaceChild(newImg, oldImg);
+                
+                console.log('Image replaced, new src:', newImg.src);
+            }
+        }
+        
+        window.prevVoteImage = function() {
+            console.log('=== prevVoteImage called ===');
+            currentVoteImageIndex = (currentVoteImageIndex - 1 + voteImages.length) % voteImages.length;
+            console.log('New index:', currentVoteImageIndex);
+            
+            var container = document.querySelector('.vote-container');
+            var oldImg = document.getElementById('voteImage');
+            console.log('Container:', container);
+            console.log('Old image:', oldImg);
+            console.log('Old image src:', oldImg ? oldImg.src : 'NOT FOUND');
+            
+            if (container && oldImg) {
+                var newSrc = voteImages[currentVoteImageIndex];
+                console.log('New src:', newSrc);
+                
+                // Create new image
+                var newImg = document.createElement('img');
+                newImg.id = 'voteImage';
+                newImg.src = newSrc;
+                newImg.style.cssText = oldImg.style.cssText;
+                
+                // Replace old with new
+                oldImg.parentNode.replaceChild(newImg, oldImg);
+                
+                console.log('Image replaced, new src:', newImg.src);
+            }
+        }
+        
+        // Attach event listeners to vote buttons
+        function attachVoteButtonListeners() {
+            var btnPrevVote = document.getElementById('btnPrevVote');
+            var btnNextVote = document.getElementById('btnNextVote');
+            
+            if (btnPrevVote) {
+                btnPrevVote.addEventListener('click', prevVoteImage);
+                console.log('Attached click listener to btnPrevVote');
+            }
+            if (btnNextVote) {
+                btnNextVote.addEventListener('click', nextVoteImage);
+                console.log('Attached click listener to btnNextVote');
+            }
+        }
+        
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', attachVoteButtonListeners);
+        } else {
+            attachVoteButtonListeners();
         }
     </script>
     <script src="js/scriipt.js"></script>
