@@ -6,6 +6,7 @@
     <title>PIPA Zone - PIXEL PALS</title>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stylePipaZone.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -80,10 +81,10 @@
                         <!-- Draw Mode Title -->
                         <div style="left: 1069px; top: 100px; position: absolute; text-align: center; color: #1D47F5; font-size: 48px; font-family: 'Symtext'; font-weight: 400; z-index: 10; width: 1400px;">Draw Mode</div>
                         
-                        <!-- Draw Mode - 3 Blue Boxes inside White -->
-                        <div style="width: 400px; height: 280px; left: 1100px; top: 200px; position: absolute; background: #1D47F5; border-radius: 12px; z-index: 10;"></div>
-                        <div style="width: 400px; height: 280px; left: 1570px; top: 200px; position: absolute; background: #1D47F5; border-radius: 12px; z-index: 10;"></div>
-                        <div style="width: 400px; height: 280px; left: 2040px; top: 200px; position: absolute; background: #1D47F5; border-radius: 12px; z-index: 10;"></div>
+                        <!-- Draw Mode - 3 Image Boxes (replacing blue boxes) -->
+                        <img id="profileDraw1" src="img/gallery/g1.png" style="width: 400px; height: 280px; left: 1100px; top: 200px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(1)" />
+                        <img id="profileDraw2" src="img/gallery/g2.png" style="width: 400px; height: 280px; left: 1570px; top: 200px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(2)" />
+                        <img id="profileDraw3" src="img/gallery/g3.png" style="width: 400px; height: 280px; left: 2040px; top: 200px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(3)" />
                         
                         <!-- White Shapes - Bottom Row (Stopmotion Mode) -->
                         <div style="width: 1438px; height: 560px; left: 1045px; top: 670px; position: absolute; background: white; border-radius: 20px;"></div>
@@ -91,10 +92,25 @@
                         <!-- Stopmotion Mode Title -->
                         <div style="left: 1069px; top: 690px; position: absolute; text-align: center; color: #1D47F5; font-size: 48px; font-family: 'Symtext'; font-weight: 400; z-index: 10; width: 1400px;">Stopmotion Mode</div>
                         
-                        <!-- Stopmotion Mode - 3 Blue Boxes inside White -->
-                        <div style="width: 400px; height: 280px; left: 1100px; top: 790px; position: absolute; background: #1D47F5; border-radius: 12px; z-index: 10;"></div>
-                        <div style="width: 400px; height: 280px; left: 1570px; top: 790px; position: absolute; background: #1D47F5; border-radius: 12px; z-index: 10;"></div>
-                        <div style="width: 400px; height: 280px; left: 2040px; top: 790px; position: absolute; background: #1D47F5; border-radius: 12px; z-index: 10;"></div>
+                        <!-- Stopmotion Mode - 3 Video Boxes (replacing blue boxes) -->
+                        <div style="width: 400px; height: 280px; left: 1100px; top: 790px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
+                            <video id="profileSm1" style="width: 100%; height: 100%; object-fit: cover;" src="vid/sm1.webm" muted onclick="toggleProfileVideo('profileSm1')"></video>
+                            <div class="play-btn" id="btn-profileSm1" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; cursor: pointer; z-index: 10;">
+                                <img src="img/gallery/play-btn.png" alt="Play" style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+                        <div style="width: 400px; height: 280px; left: 1570px; top: 790px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
+                            <video id="profileSm2" style="width: 100%; height: 100%; object-fit: cover;" src="vid/sm2.webm" muted onclick="toggleProfileVideo('profileSm2')"></video>
+                            <div class="play-btn" id="btn-profileSm2" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; cursor: pointer; z-index: 10;">
+                                <img src="img/gallery/play-btn.png" alt="Play" style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                        </div>
+                        <div style="width: 400px; height: 280px; left: 2040px; top: 790px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
+                            <video id="profileSm3" style="width: 100%; height: 100%; object-fit: cover;" src="vid/sm3.webm" muted onclick="toggleProfileVideo('profileSm3')"></video>
+                            <div class="play-btn" id="btn-profileSm3" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; cursor: pointer; z-index: 10;">
+                                <img src="img/gallery/play-btn.png" alt="Play" style="width: 100%; height: 100%; object-fit: contain;">
+                            </div>
+                        </div>
                         
                         <!-- Avatar Section - Left Side -->
                         <div style="width: 685px; height: 750px; left: 87px; top: 100px; position: absolute; background: white; border-radius: 20px;"></div>
@@ -221,22 +237,33 @@
                     <div style="width: 1594px; height: 1320.70px; left: 0px; top: 161px; position: absolute; background: white"></div>
                     <div style="width: 815px; height: 161px; left: 779px; top: 0px; position: absolute; background: white"></div>
                     <div style="width: 701px; height: 136px; left: 815px; top: 10px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #1D47F5; font-size: 56.47px; font-family: Symtext; font-weight: 400; word-wrap: break-word">MAKE LOBBY</div>
-                    <img style="width: 685px; height: 514px; left: 74px; top: 238px; position: absolute; border: 6px #1D47F5 solid" src="img/stopmotion-5.png" />
-                    <img style="width: 685px; height: 514px; left: 834px; top: 238px; position: absolute; border: 6px #1D47F5 solid" src="img/stopmotion-6.png" />
-                    <img style="width: 685px; height: 514px; left: 74px; top: 804px; position: absolute; border: 6px #1D47F5 solid" src="img/stopmotion-7.png" />
-                    <img style="width: 685px; height: 514px; left: 835px; top: 804px; position: absolute; border: 6px #1D47F5 solid" src="img/stopmotion-8.png" />
-                    <div style="width: 230.98px; height: 230.98px; left: 778.47px; top: 0px; position: absolute; transform: rotate(34deg); transform-origin: top left; background: white"></div>
-                    <div style="width: 107.62px; height: 107.62px; left: 48.26px; top: 199.61px; position: absolute; background: #D0FE54; border-radius: 9999px"></div>
-                    <div style="width: 27.42px; height: 0px; left: 72.62px; top: 255.35px; position: absolute; transform: rotate(45deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
-                    <div style="width: 58.35px; height: 0px; left: 131.52px; top: 232.10px; position: absolute; transform: rotate(133deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
-                    <div style="width: 107.62px; height: 107.62px; left: 797px; top: 199.61px; position: absolute; background: #D0FE54; border-radius: 9999px"></div>
-                    <div style="width: 27.42px; height: 0px; left: 821.36px; top: 255.35px; position: absolute; transform: rotate(45deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
-                    <div style="width: 58.35px; height: 0px; left: 880.26px; top: 232.10px; position: absolute; transform: rotate(133deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
-                    <div style="width: 107.62px; height: 107.62px; left: 38.20px; top: 770.78px; position: absolute; background: #D0FE54; border-radius: 9999px"></div>
-                    <div style="width: 27.42px; height: 0px; left: 62.56px; top: 826.51px; position: absolute; transform: rotate(45deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
-                    <div style="width: 58.35px; height: 0px; left: 121.46px; top: 803.26px; position: absolute; transform: rotate(133deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
-                    <div style="width: 270.90px; height: 79.31px; left: 1201.28px; top: 1365.89px; position: absolute; background: #1D47F5; border-radius: 200.97px"></div>
-                    <div style="width: 388.28px; height: 90.23px; left: 1142.59px; top: 1360.43px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #D0FE54; font-size: 40.19px; font-family: Symtext; font-weight: 400; letter-spacing: 1.21px; word-wrap: break-word">next</div>
+                    <img id="makeLobbyImg1" style="width: 685px; height: 514px; left: 74px; top: 238px; position: absolute; border: 6px #1D47F5 solid; cursor: pointer;" src="img/gallery/g1.png" onclick="selectMakeLobbyImage(1)" />
+                    <img id="makeLobbyImg2" style="width: 685px; height: 514px; left: 834px; top: 238px; position: absolute; border: 6px #1D47F5 solid; cursor: pointer;" src="img/gallery/g2.png" onclick="selectMakeLobbyImage(2)" />
+                    <img id="makeLobbyImg3" style="width: 685px; height: 514px; left: 74px; top: 804px; position: absolute; border: 6px #1D47F5 solid; cursor: pointer;" src="img/gallery/g3.png" onclick="selectMakeLobbyImage(3)" />
+                    <img id="makeLobbyImg4" style="width: 685px; height: 514px; left: 835px; top: 804px; position: absolute; border: 6px #1D47F5 solid; cursor: pointer;" src="img/gallery/g4.png" onclick="selectMakeLobbyImage(4)" />
+                    
+                    <!-- Selection indicators (hidden by default) -->
+                    <div id="check1" style="width: 107.62px; height: 107.62px; left: 48.26px; top: 199.61px; position: absolute; background: #D0FE54; border-radius: 9999px; display: none; z-index: 100;">
+                        <div style="width: 27.42px; height: 0px; left: 72.62px; top: 255.35px; position: absolute; transform: rotate(45deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                        <div style="width: 58.35px; height: 0px; left: 131.52px; top: 232.10px; position: absolute; transform: rotate(133deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                    </div>
+                    <div id="check2" style="width: 107.62px; height: 107.62px; left: 797px; top: 199.61px; position: absolute; background: #D0FE54; border-radius: 9999px; display: none; z-index: 100;">
+                        <div style="width: 27.42px; height: 0px; left: 821.36px; top: 255.35px; position: absolute; transform: rotate(45deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                        <div style="width: 58.35px; height: 0px; left: 880.26px; top: 232.10px; position: absolute; transform: rotate(133deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                    </div>
+                    <div id="check3" style="width: 107.62px; height: 107.62px; left: 38.20px; top: 770.78px; position: absolute; background: #D0FE54; border-radius: 9999px; display: none; z-index: 100;">
+                        <div style="width: 27.42px; height: 0px; left: 62.56px; top: 826.51px; position: absolute; transform: rotate(45deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                        <div style="width: 58.35px; height: 0px; left: 121.46px; top: 803.26px; position: absolute; transform: rotate(133deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                    </div>
+                    <div id="check4" style="width: 107.62px; height: 107.62px; left: 799px; top: 770.78px; position: absolute; background: #D0FE54; border-radius: 9999px; display: none; z-index: 100;">
+                        <div style="width: 27.42px; height: 0px; left: 823.36px; top: 826.51px; position: absolute; transform: rotate(45deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                        <div style="width: 58.35px; height: 0px; left: 882.26px; top: 803.26px; position: absolute; transform: rotate(133deg); transform-origin: top left; outline: 5px #1D47F5 solid; outline-offset: -2.50px"></div>
+                    </div>
+                    
+                    <!-- Next Button -->
+                    <div id="makeLobbyNext" style="width: 270.90px; height: 79.31px; left: 1201.28px; top: 1365.89px; position: absolute; background: #1D47F5; border-radius: 200.97px; cursor: pointer; display: none;" onclick="goToStopmotionResult()">
+                        <div style="width: 388.28px; height: 90.23px; left: 1142.59px; top: 1360.43px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #D0FE54; font-size: 40.19px; font-family: Symtext; font-weight: 400; letter-spacing: 1.21px; word-wrap: break-word">next</div>
+                    </div>
                     <div style="width: 388.28px; height: 90.23px; left: 1142.59px; top: 1360.43px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: #D0FE54; font-size: 40.19px; font-family: Symtext; font-weight: 400; letter-spacing: 1.21px; word-wrap: break-word">next</div>
                     <div>
                         <button id="btnJoin" style="background: none; border: none; width: 701px; height: 136px; left: 39px; top: 25px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 56.47px; font-family: Symtext; font-weight: 400; word-wrap: break-word">JOIN LOBBY</button>
@@ -297,6 +324,9 @@
                         <div style="width: 822.37px; height: 1198.85px; left: 21.61px; top: 186.59px; position: absolute; background: #1D47F5"></div>
                         <div style="width: 865.59px; height: 1141.17px; left: 0px; top: 215.43px; position: absolute; background: #1D47F5"></div>
                         <div style="width: 636px; height: 81px; left: 115px; top: 50px; position: absolute; text-align: center; justify-content: center; display: flex; flex-direction: column; color: white; font-size: 64px; font-family: Symtext; font-weight: 400; word-wrap: break-word">OTHER PLAYERS</div>
+                        <!-- Scroll buttons for gallery -->
+                        <img id="galleryScrollUp" src="img/gallery-button.png" style="width: 60px; height: 60px; left: 1200px; top: 50px; position: absolute; cursor: pointer;">
+                        <img id="galleryScrollDown" src="img/gallery-button.png" style="width: 60px; height: 60px; left: 1200px; top: 1200px; position: absolute; transform: rotate(180deg); cursor: pointer;">
                         <div style="width: 392.72px; height: 126.49px; left: 80.52px; top: 316.11px; position: absolute; background: #D0FE54; pointer-events: none;" class="player-box" data-row="0"></div>
                         <div style="width: 369.49px; height: 141.85px; left: 92.13px; top: 308.43px; position: absolute; background: #D0FE54; pointer-events: none;" class="player-box" data-row="0"></div>
                         <div style="width: 416.81px; height: 111.01px; left: 68.76px; top: 323.85px; position: absolute; background: #D0FE54; pointer-events: none;" class="player-box" data-row="0"></div>
@@ -515,7 +545,7 @@
         </div>
     </div>
 
-    <script>
+   <script>
         // Profile Navigation - New Design
         const profilesNew = document.querySelectorAll('.profile-img-new');
         const btnPrevNew = document.getElementById('btnPrevNew');
@@ -1401,80 +1431,19 @@
         var currentVoteImageIndex = 0;
         
         window.nextVoteImage = function() {
-            console.log('=== nextVoteImage called ===');
             currentVoteImageIndex = (currentVoteImageIndex + 1) % voteImages.length;
-            console.log('New index:', currentVoteImageIndex);
-            
-            var container = document.querySelector('.vote-container');
-            var oldImg = document.getElementById('voteImage');
-            console.log('Container:', container);
-            console.log('Old image:', oldImg);
-            console.log('Old image src:', oldImg ? oldImg.src : 'NOT FOUND');
-            
-            if (container && oldImg) {
-                var newSrc = voteImages[currentVoteImageIndex];
-                console.log('New src:', newSrc);
-                
-                // Create new image
-                var newImg = document.createElement('img');
-                newImg.id = 'voteImage';
-                newImg.src = newSrc;
-                newImg.style.cssText = oldImg.style.cssText;
-                
-                // Replace old with new
-                oldImg.parentNode.replaceChild(newImg, oldImg);
-                
-                console.log('Image replaced, new src:', newImg.src);
+            var img = document.getElementById('voteImage');
+            if (img) {
+                img.src = voteImages[currentVoteImageIndex] + '?t=' + Date.now();
             }
         }
         
         window.prevVoteImage = function() {
-            console.log('=== prevVoteImage called ===');
             currentVoteImageIndex = (currentVoteImageIndex - 1 + voteImages.length) % voteImages.length;
-            console.log('New index:', currentVoteImageIndex);
-            
-            var container = document.querySelector('.vote-container');
-            var oldImg = document.getElementById('voteImage');
-            console.log('Container:', container);
-            console.log('Old image:', oldImg);
-            console.log('Old image src:', oldImg ? oldImg.src : 'NOT FOUND');
-            
-            if (container && oldImg) {
-                var newSrc = voteImages[currentVoteImageIndex];
-                console.log('New src:', newSrc);
-                
-                // Create new image
-                var newImg = document.createElement('img');
-                newImg.id = 'voteImage';
-                newImg.src = newSrc;
-                newImg.style.cssText = oldImg.style.cssText;
-                
-                // Replace old with new
-                oldImg.parentNode.replaceChild(newImg, oldImg);
-                
-                console.log('Image replaced, new src:', newImg.src);
+            var img = document.getElementById('voteImage');
+            if (img) {
+                img.src = voteImages[currentVoteImageIndex] + '?t=' + Date.now();
             }
-        }
-        
-        // Attach event listeners to vote buttons
-        function attachVoteButtonListeners() {
-            var btnPrevVote = document.getElementById('btnPrevVote');
-            var btnNextVote = document.getElementById('btnNextVote');
-            
-            if (btnPrevVote) {
-                btnPrevVote.addEventListener('click', prevVoteImage);
-                console.log('Attached click listener to btnPrevVote');
-            }
-            if (btnNextVote) {
-                btnNextVote.addEventListener('click', nextVoteImage);
-                console.log('Attached click listener to btnNextVote');
-            }
-        }
-        
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', attachVoteButtonListeners);
-        } else {
-            attachVoteButtonListeners();
         }
     </script>
     <script src="js/scriipt.js"></script>
