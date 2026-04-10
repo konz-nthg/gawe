@@ -41,17 +41,23 @@
         
         <div style="width: 445px; height: 1022px; left: 2302.81px; top: 92px; position: absolute; background: #D0FE54"></div>
         
-        <button class="tool-btn active" id="btnBrush" style="width: 173px; height: 173px; left: 2337.81px; top: 134px; position: absolute; background: #1D47F5">BRUSH</button>
-        <button class="tool-btn" id="btnEraser" style="width: 173px; height: 173px; left: 2539.81px; top: 134px; position: absolute; background: #1D47F5">ERASER</button>
+        <button class="tool-btn active" id="btnBrush" style="width: 173px; height: 173px; left: 2337.81px; top: 134px; position: absolute; background: #1D47F5"><img src="../img/draw/tool-brush.png.png"></button>
+        <button class="tool-btn" id="btnEraser" style="width: 173px; height: 173px; left: 2539.81px; top: 134px; position: absolute; background: #1D47F5"><img src="../img/draw/tool-eraser.png.png"></button>
         
-        <button class="tool-btn" id="btnRect" style="width: 173px; height: 173px; left: 2337.81px; top: 338px; position: absolute; background: #1D47F5">RECT</button>
-        <button class="tool-btn" id="btnText" style="width: 173px; height: 173px; left: 2539.81px; top: 338px; position: absolute; background: #1D47F5">TEXT</button>
+        <button class="tool-btn" id="btnRect" style="width: 173px; height: 173px; left: 2337.81px; top: 338px; position: absolute; background: #1D47F5"><img src="../img/draw/tool-shapes.png.png"></button>
+        <button class="tool-btn" id="btnText" style="width: 173px; height: 173px; left: 2539.81px; top: 338px; position: absolute; background: #1D47F5"><img src="../img/draw/tool-text.png.png"></button>
         
-        <button class="tool-btn" style="width: 173px; height: 173px; left: 2337.81px; top: 542px; position: absolute; background: #444; cursor: not-allowed;" disabled></button>
-        <button class="tool-btn" style="width: 173px; height: 173px; left: 2539.81px; top: 542px; position: absolute; background: #444; cursor: not-allowed;" disabled></button>
+        <button class="tool-btn" id="btnColorPicker" style="width: 173px; height: 173px; left: 2337.81px; top: 542px; position: absolute; background: #1D47F5; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            <img src="../img/draw/tool-picker.png.png" style="width: 80px; height: 80px;">
+            <span style="color: white; font-size: 16px; margin-top: 5px;"></span>
+        </button>
+        <button class="tool-btn" id="btnFill" style="width: 173px; height: 173px; left: 2539.81px; top: 542px; position: absolute; background: #1D47F5; display: flex; align-items: center; justify-content: center; flex-direction: column;">
+            <img src="../img/draw/tool-fill.png.png" style="width: 80px; height: 80px;">
+            <span style="color: white; font-size: 16px; margin-top: 5px;"></span>
+        </button>
         
-        <button class="tool-btn" id="btnUndo" style="width: 173px; height: 173px; left: 2337.81px; top: 746px; position: absolute; background: #1D47F5">UNDO</button>
-        <button class="tool-btn" id="btnRedo" style="width: 173px; height: 173px; left: 2539.81px; top: 746px; position: absolute; background: #1D47F5">REDO</button>
+        <button class="tool-btn" id="btnUndo" style="width: 173px; height: 173px; left: 2337.81px; top: 746px; position: absolute; background: #1D47F5"><img src="../img/draw/tool-undo.png.png"></button>
+        <button class="tool-btn" id="btnRedo" style="width: 173px; height: 173px; left: 2539.81px; top: 746px; position: absolute; background: #1D47F5"><img src="../img/draw/tool-redo.png.png"></button>
 
         <div style="width: 1554px; height: 979px; left: 608px; top: 92px; position: absolute; background: white; border: 4px black solid; overflow: hidden;">
             <canvas id="drawingCanvas"></canvas>
@@ -131,6 +137,114 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // --- LOGIKA TOOLS ---
 
+    // Color Picker (Eyedropper) - Ambil warna dari pixel canvas
+    let isColorPickerActive = false;
+    document.getElementById('btnColorPicker').addEventListener('click', () => {
+        isColorPickerActive = !isColorPickerActive;
+        setActiveButton('btnColorPicker');
+        canvas.isDrawingMode = false;
+        canvas.defaultCursor = isColorPickerActive ? 'crosshair' : 'default';
+    });
+
+    canvas.on('mouse:down', function(opt) {
+        if (isColorPickerActive) {
+            const pointer = canvas.getPointer(opt.e);
+            const x = Math.floor(pointer.x);
+            const y = Math.floor(pointer.y);
+            
+            // Ambil dari upper canvas (drawing layer)
+            const ctx = canvas.getContext();
+            if (x >= 0 && x < canvas.width && y >= 0 && y < canvas.height) {
+                const imgData = ctx.getImageData(x, y, 1, 1).data;
+                const hex = rgbToHex(imgData[0], imgData[1], imgData[2]);
+                currentColor = hex;
+                canvas.freeDrawingBrush.color = currentColor;
+                document.getElementById('brushIndicator').style.background = hex;
+            }
+            
+            isColorPickerActive = false;
+            document.getElementById('btnColorPicker').classList.remove('active');
+            canvas.defaultCursor = 'default';
+        }
+    });
+
+    // Helper: RGB to Hex
+    function rgbToHex(r, g, b) {
+        return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    // Bucket Fill Tool - Flood Fill Iterative
+    document.getElementById('btnFill').addEventListener('click', () => {
+        setActiveButton('btnFill');
+    });
+
+    canvas.on('mouse:down', function(opt) {
+        if (document.getElementById('btnFill').classList.contains('active')) {
+            const pointer = canvas.getPointer(opt.e);
+            const startX = Math.floor(pointer.x);
+            const startY = Math.floor(pointer.y);
+            
+            const ctx = canvas.getContext();
+            const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+            const pixels = imgData.data;
+            
+            const targetColor = getPixelColor(pixels, startX, startY, canvas.width);
+            const fillColor = hexToRgb(currentColor);
+            const tolerance = 32;
+            
+            if (colorsMatch(targetColor, fillColor, 0)) return;
+            
+            floodFill(pixels, canvas.width, canvas.height, startX, startY, targetColor, fillColor, tolerance);
+            
+            ctx.putImageData(imgData, 0, 0);
+        }
+    });
+
+    function getPixelColor(pixels, x, y, width) {
+        const i = (y * width + x) * 4;
+        return { r: pixels[i], g: pixels[i+1], b: pixels[i+2] };
+    }
+
+    function hexToRgb(hex) {
+        const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+        return result ? {
+            r: parseInt(result[1], 16),
+            g: parseInt(result[2], 16),
+            b: parseInt(result[3], 16)
+        } : { r: 0, g: 0, b: 0 };
+    }
+
+    function colorsMatch(c1, c2, tolerance) {
+        return Math.abs(c1.r - c2.r) <= tolerance &&
+               Math.abs(c1.g - c2.g) <= tolerance &&
+               Math.abs(c1.b - c2.b) <= tolerance;
+    }
+
+    // Flood Fill - Iterative (Stack-based, bukan recursive)
+    function floodFill(pixels, width, height, startX, startY, targetColor, fillColor, tolerance) {
+        const stack = [[startX, startY]];
+        
+        while (stack.length > 0) {
+            const [x, y] = stack.pop();
+            
+            if (x < 0 || x >= width || y < 0 || y >= height) continue;
+            
+            const currentColor = getPixelColor(pixels, x, y, width);
+            if (!colorsMatch(currentColor, targetColor, tolerance)) continue;
+            
+            const i = (y * width + x) * 4;
+            pixels[i] = fillColor.r;
+            pixels[i+1] = fillColor.g;
+            pixels[i+2] = fillColor.b;
+            pixels[i+3] = 255;
+            
+            stack.push([x + 1, y]);
+            stack.push([x - 1, y]);
+            stack.push([x, y + 1]);
+            stack.push([x, y - 1]);
+        }
+    }
+
     // Brush Tool
     document.getElementById('btnBrush').addEventListener('click', () => {
         setActiveButton('btnBrush');
@@ -152,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const rect = new fabric.Rect({
             left: 200, top: 200,
             width: 300, height: 200,
-            fill: isStrokeMode ? 'transparent' : currentColor,
+            fill: currentColor,
             stroke: isStrokeMode ? currentColor : null,
             strokeWidth: isStrokeMode ? currentSize : 0,
             cornerSize: 20,
@@ -180,11 +294,21 @@ document.addEventListener("DOMContentLoaded", function() {
     strokeBtn.addEventListener('click', () => {
         isStrokeMode = !isStrokeMode;
         if (isStrokeMode) {
-            strokeBtn.style.borderColor = "#D0FE54"; // Hijau saat aktif
+            strokeBtn.style.borderColor = "#D0FE54";
             strokeBtn.innerText = "STROKE ON";
         } else {
-            strokeBtn.style.borderColor = "black"; // Hitam saat mati
+            strokeBtn.style.borderColor = "black";
             strokeBtn.innerText = "STROKE OFF";
+        }
+        
+        const activeObj = canvas.getActiveObject();
+        if (activeObj && activeObj.type === 'rect') {
+            if (isStrokeMode) {
+                activeObj.set({ stroke: currentColor, strokeWidth: currentSize });
+            } else {
+                activeObj.set({ stroke: null, strokeWidth: 0 });
+            }
+            canvas.renderAll();
         }
     });
 
@@ -235,6 +359,9 @@ document.addEventListener("DOMContentLoaded", function() {
         link.href = canvas.toDataURL({ format: 'png' });
         link.click();
     });
+
+    
+
 });
 </script>
 </body>

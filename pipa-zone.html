@@ -78,36 +78,42 @@
                         <div style="width: 865.59px; height: 1141.17px; left: 1683.35px; top: 54.92px; position: absolute; background: #1D47F5;"></div>
                         
                         <!-- White Shapes - Top Row (Draw Mode) -->
-                        <div style="width: 1438px; height: 560px; left: 1045px; top: 80px; position: absolute; background: white; border-radius: 20px;"></div>
+                        <div style="width: 1438px; height: 500px; left: 1045px; top: 80px; position: absolute; background: white; border-radius: 20px;"></div>
                         
                         <!-- Draw Mode Title -->
-                        <div style="left: 1069px; top: 100px; position: absolute; text-align: center; color: #1D47F5; font-size: 48px; font-family: 'Symtext'; font-weight: 400; z-index: 10; width: 1400px;">Draw Mode</div>
+                        <div style="left: 1069px; top: 125px; position: absolute; text-align: center; color: #1D47F5; font-size: 48px; font-family: 'Symtext'; font-weight: 400; z-index: 10; width: 1400px;">Draw Mode</div>
                         
                         <!-- Draw Mode - 3 Image Boxes (replacing blue boxes) -->
-                        <img id="profileDraw1" src="img/gallery/g1.png" style="width: 400px; height: 280px; left: 1100px; top: 200px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(1)" />
-                        <img id="profileDraw2" src="img/gallery/g2.png" style="width: 400px; height: 280px; left: 1570px; top: 200px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(2)" />
-                        <img id="profileDraw3" src="img/gallery/g3.png" style="width: 400px; height: 280px; left: 2040px; top: 200px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(3)" />
+                        <div style="width: 420px; height: 300px; left: 1090px; top: 230px; position: absolute; background: #1D47F5; border-radius: 10px;"></div>
+                        <div style="width: 420px; height: 300px; left: 1560px; top: 230px; position: absolute; background: #1D47F5; border-radius: 10px;"></div>
+                        <div style="width: 420px; height: 300px; left: 2030px; top: 230px; position: absolute; background: #1D47F5; border-radius: 10px;"></div>
+                        <img id="profileDraw1" src="img/gallery/g1.png" style="width: 400px; height: 280px; left: 1100px; top: 240px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(1)";/>
+                        <img id="profileDraw2" src="img/gallery/g2.png" style="width: 400px; height: 280px; left: 1570px; top: 240px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(2)" />
+                        <img id="profileDraw3" src="img/gallery/g3.png" style="width: 400px; height: 280px; left: 2040px; top: 240px; position: absolute; border-radius: 12px; z-index: 10; object-fit: cover; cursor: pointer;" onclick="viewDrawImage(3)" />
                         
                         <!-- White Shapes - Bottom Row (Stopmotion Mode) -->
-                        <div style="width: 1438px; height: 560px; left: 1045px; top: 670px; position: absolute; background: white; border-radius: 20px;"></div>
+                        <div style="width: 1438px; height: 500px; left: 1045px; top: 670px; position: absolute; background: white; border-radius: 20px;"></div>
                         
                         <!-- Stopmotion Mode Title -->
-                        <div style="left: 1069px; top: 690px; position: absolute; text-align: center; color: #1D47F5; font-size: 48px; font-family: 'Symtext'; font-weight: 400; z-index: 10; width: 1400px;">Stopmotion Mode</div>
+                        <div style="left: 1069px; top: 715px; position: absolute; text-align: center; color: #1D47F5; font-size: 48px; font-family: 'Symtext'; font-weight: 400; z-index: 10; width: 1400px;">Stopmotion Mode</div>
                         
                         <!-- Stopmotion Mode - 3 Video Boxes (replacing blue boxes) -->
-                        <div style="width: 400px; height: 280px; left: 1100px; top: 790px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
+                         <div style="width: 420px; height: 300px; left: 1090px; top: 820px; position: absolute; background: #1D47F5; border-radius: 10px;"></div>
+                         <div style="width: 420px; height: 300px; left: 1560px; top: 820px; position: absolute; background: #1D47F5; border-radius: 10px;"></div>
+                         <div style="width: 420px; height: 300px; left: 2030px; top: 820px; position: absolute; background: #1D47F5; border-radius: 10px;"></div>
+                        <div style="width: 400px; height: 280px; left: 1100px; top: 830px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
                             <video id="profileSm1" style="width: 100%; height: 100%; object-fit: cover;" src="vid/sm1.webm" muted onclick="toggleProfileVideo('profileSm1')"></video>
                             <div class="play-btn" id="btn-profileSm1" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; cursor: pointer; z-index: 10;">
                                 <img src="img/gallery/play-btn.png" alt="Play" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                         </div>
-                        <div style="width: 400px; height: 280px; left: 1570px; top: 790px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
+                        <div style="width: 400px; height: 280px; left: 1570px; top: 830px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
                             <video id="profileSm2" style="width: 100%; height: 100%; object-fit: cover;" src="vid/sm2.webm" muted onclick="toggleProfileVideo('profileSm2')"></video>
                             <div class="play-btn" id="btn-profileSm2" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; cursor: pointer; z-index: 10;">
                                 <img src="img/gallery/play-btn.png" alt="Play" style="width: 100%; height: 100%; object-fit: contain;">
                             </div>
                         </div>
-                        <div style="width: 400px; height: 280px; left: 2040px; top: 790px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
+                        <div style="width: 400px; height: 280px; left: 2040px; top: 830px; position: absolute; border-radius: 12px; z-index: 10; overflow: hidden;">
                             <video id="profileSm3" style="width: 100%; height: 100%; object-fit: cover;" src="vid/sm3.webm" muted onclick="toggleProfileVideo('profileSm3')"></video>
                             <div class="play-btn" id="btn-profileSm3" style="position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 60px; height: 60px; cursor: pointer; z-index: 10;">
                                 <img src="img/gallery/play-btn.png" alt="Play" style="width: 100%; height: 100%; object-fit: contain;">
@@ -134,8 +140,8 @@
                             <img src="img/profil 9.png" alt="Profile 9" class="profile-img-new" data-index="8" style="width: 100%; height: 100%; object-fit: contain; position: absolute; top: 0; left: 0; display: none;">
                         </div>
                         <div class="button-container-new" style="display: flex; gap: 60px; justify-content: center; align-items: center; margin-top: 30px; width: 417px; margin-left: auto; margin-right: auto;">
-                                <img src="img/next-button.png" alt="Previous" class="btn-nav-new" id="btnPrevNew" style="width: 60px; height: 60px; cursor: pointer; transform: scaleX(-1);">
-                                <img src="img/Next-R-Button.png" alt="Next" class="btn-nav-new" id="btnNextNew" style="width: 60px; height: 60px; cursor: pointer;">
+                                <img src="img/next-button.png" alt="Previous" class="btn-nav-new" id="btnPrevNew" style="width: 60px; height: 60px; cursor: pointer;">
+                                <img src="img/next-button.png" alt="Next" class="btn-nav-new" id="btnNextNew" style="width: 60px; height: 60px; cursor: pointer; transform: rotate(180deg);">
                             </div>
                         </div>
                         
@@ -156,7 +162,7 @@
 
         <!-- Page 1: DRAW -->
         <div class="page-section" data-page="draw">
-            <div id="drawingContainer">
+            <div id="drawingContainer" style="position: absolute;">
                 <iframe src="ref/testing1.html" id="drawFrame"></iframe>
             </div>
         </div>
@@ -174,6 +180,7 @@
                     <div style="width: 685px; height: 222px; left: 74.93px; top: 1117px; position: absolute; background: white"></div>
                     <div style="width: 685px; height: 222px; left: 835.93px; top: 1117px; position: absolute; background: white"></div>
                     <div style="width: 815px; height: 161px; left: 779px; top: 0px; position: absolute; background: white"></div>
+                    <div style="width: 230.98px; height: 230.98px; left: 970.01px; top: 127.25px; position: absolute; transform: rotate(123deg); transform-origin: top left; background: white"></div>
                     <div style="width: 1594px; height: 1251px; left: 0px; top: 161px; position: absolute; background: #1D47F5"></div>
                     <div style="width: 685px; height: 222px; left: 73.31px; top: 219px; position: absolute; background: white"></div>
                     <div style="width: 685px; height: 222px; left: 834.31px; top: 219px; position: absolute; background: white"></div>
