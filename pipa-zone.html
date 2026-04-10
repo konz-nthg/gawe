@@ -1146,6 +1146,26 @@
             }
         }
         
+        // Profile Stopmotion video play/pause function
+        function toggleProfileVideo(videoId) {
+            var video = document.getElementById(videoId);
+            if (!video) return;
+            
+            var isPlaying = !video.paused && !video.ended;
+            var btn = document.getElementById('btn-' + videoId);
+            
+            if (isPlaying) {
+                video.pause();
+                video.currentTime = 0;
+                video.loop = false;
+                if (btn) btn.style.display = 'block';
+            } else {
+                video.loop = true;
+                video.play();
+                if (btn) btn.style.display = 'none';
+            }
+        }
+        
         // Star rating system for vote page
         function toggleStar(rating) {
             var stars = document.querySelectorAll('.star-off, .star-on');
